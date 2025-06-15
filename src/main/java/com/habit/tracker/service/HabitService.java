@@ -1,5 +1,7 @@
 package com.habit.tracker.service;
 
+import com.habit.tracker.config.KafaConsumerRoute;
+import com.habit.tracker.config.KafaProducerRoute;
 import com.habit.tracker.entity.HabitEntity;
 import com.habit.tracker.repository.HabitRepository;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -13,6 +15,8 @@ import java.util.List;
 public class HabitService {
     @Autowired
     private HabitRepository habitRepository;
+    @Autowired
+    private KafaProducerRoute kafaProducerRoute;
 
     public JsonNode saveHabit(HabitEntity habitEntity) {
         if (habitEntity == null || habitEntity.getHabitName() == null || habitEntity.getHabitName().isEmpty()) {
@@ -40,6 +44,7 @@ public class HabitService {
                         .put("habitName", savedHabit.getHabitName());
             }
             savedHabit = habitRepository.save(habitEntity);
+            kafaProducerRoute.sendMessageToKafka(savedHabit);
             return JsonNodeFactory.instance.objectNode()
                     .put("status", "success")
                     .put("message", "Habit saved successfully")

@@ -16,6 +16,11 @@ public class HabitController {
     @Autowired
     private HabitService habitService;
 
+    @GetMapping("/habit-tracker")
+    public String openHabitTrackerPage() {
+        return "index"; // Loads index.html from templates
+    }
+
     @PostMapping("save")
     public JsonNode saveHabit(@RequestBody HabitEntity habitEntity) {
         try {

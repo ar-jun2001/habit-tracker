@@ -43,18 +43,20 @@ A simple Java Spring Boot application for tracking habits. This project provides
 - `GET /getAllHabits` - Retrieve all habits
 
 ### Frontend
-Open `src/main/resources/static/index.html` in your browser for a simple UI.
+This project uses [Thymeleaf](https://www.thymeleaf.org/) as the template engine for the frontend. All HTML templates are located in `src/main/resources/templates/`.
+
+To view the frontend, start the application and open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Project Structure
 - `controller/` - REST controllers
 - `entity/` - JPA entities
 - `repository/` - Spring Data repositories
 - `service/` - Business logic
-- `static/` - Frontend files (HTML, JS, CSS)
+- `templates/` - Thymeleaf HTML templates
+- `static/` - Static assets (CSS, JS)
 
 ## Configuration
 Edit `src/main/resources/application.properties` to change DB settings or server port.
 
 ## License
 MIT License
-

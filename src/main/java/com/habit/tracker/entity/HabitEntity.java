@@ -15,9 +15,9 @@ public class HabitEntity {
     private Long id;
     @Column(name = "habit_name", nullable = false)
     private String habitName;
-    @Column(name = "habit_description" , nullable = true)
+    @Column(name = "habit_description", nullable = true)
     private String habitDescription;
-    @Column(name ="habit_Status", nullable = false)
+    @Column(name = "habit_Status", nullable = false)
     private String habitStatus;
 
     public String getHabitName() {
